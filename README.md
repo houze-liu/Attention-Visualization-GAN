@@ -9,20 +9,18 @@ The main purpose of this project is to visualize attention map. As in [paper](ht
 Here we only interested in weights, or probability which describes where and what level the model should pay attention to for per location. We specified one, and visualized the weights.  
 
 ## Example results
+This is the feature maps(dim=64) taken from second last layer of generator. Red crossing stands for target location, and Blue dots are 10 locations that have greatest weights. The bigger, the greater weight they represent.
 
 <img src='./assets/attn_map_hair.png'>
 
-This is the feature maps(dim=64) taken from second last layer of generator. Red crossing stands for target location, and Blue dots are 10 locations that have greatest weights. The bigger, the greater weight they represent.
-
-<img src='./assets/attn_hair.png' align='left' ><img src='./assets/original_imafe.png' align='right'>
-
-Here is one pixel on the hair and its attention map. The attention map(left) is the same one above.   
-
+Here is one pixel on the hair and its attention map. The attention map(left) is the same one above.  
 (pixel of red dot in the right image is related to, but not only to red crossing in the above)
+
+<img src='./assets/attn_hair.png' align='left' ><img src='./assets/original_imafe.png' align='center'>
 
 ### another result
 
-Here is one location on the eye, with the same treating. 
+Here is one location on the eye, with the same treating.
 
 <img src='./assets/attn_map_eye.png'>
 
