@@ -1,2 +1,2 @@
 # ignore notebook
-!visualize_attn.ipynb
+*.ipynb
