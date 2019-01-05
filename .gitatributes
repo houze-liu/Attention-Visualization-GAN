@@ -1,0 +1,2 @@
+# ignore .ipynb
+*.ipynb linguist-vendored
