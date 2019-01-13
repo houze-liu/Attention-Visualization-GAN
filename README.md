@@ -60,7 +60,7 @@ After training, `visualize_attn.ipynb` should be able to load model.
 training monitor through [visdom](https://github.com/facebookresearch/visdom)
 
 ```bash
-$ pip intall visdom
+$ pip install visdom
 ```
 
 and run it:
