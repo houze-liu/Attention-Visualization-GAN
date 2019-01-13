@@ -4,7 +4,7 @@ This is pytorch implementation of [Self-Attention GAN](https://arxiv.org/abs/180
 
 Code was heavily borrowed from [heykeetae](https://github.com/heykeetae/Self-Attention-GAN)  
 
-The main purpose of this project is to visualize attention map. As in [paper](https://arxiv.org/pdf/1706.03762.pdf), self-attention can be seen as query, key and value triple and for generating pixel in every location, all locations will be queried resulting in probability distribution over all locations. Probability can be seen as weights which sum to one. Using weights and corresponding values we can get a real number used to adjust the value of certain location a little bit, by doing this for all locations we finally influence all pixels.  
+The main purpose of this project is to visualize attention map. As in [paper](https://arxiv.org/pdf/1706.03762.pdf), self-attention can be seen as query, key and value triple and for generating pixel in every location, all locations will be queried resulting in probability distribution over all locations. Probability can be seen as weights which sum to one. Using weights and corresponding values we can get a real number used to adjust the value of certain location a little bit, by doing so for all locations we finally influence all pixels.  
 
 Here we only interested in weights, or probability which describes where and what level the model should pay attention to for per location. We specified one, and visualized the weights.  
 
@@ -55,14 +55,29 @@ $ python main.py
 
 After training, `visualize_attn.ipynb` should be able to load model.
 
+## Recent update
+
+training monitor through [visdom](https://github.com/facebookresearch/visdom)
+
+```bash
+$ pip intall visdom
+```
+
+and run it:
+
+```bash
+$ visdom
+```
+
+Open the url in your browser and it should be like this:
+
+<img src='./assets/visdom.png'>
+
 
 
 TODO:  
 
 - [ ] change where self-attention was inserted; different layer may show different results.
-- [ ] interaction interface
-
-
 
 
 

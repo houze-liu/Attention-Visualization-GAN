@@ -4,6 +4,7 @@ import os
 from modules import Generator, Discriminator
 from torchvision.utils import save_image
 import torch.optim
+import visdom
 
 
 def denorm(x):
@@ -93,6 +94,7 @@ class Trainer(object):
 
     def train(self):
         loss = {}
+        vis = visdom.Visdom()
 
         data_iter = iter(self.dataloader)
         g_lr = self.g_lr
@@ -145,11 +147,18 @@ class Trainer(object):
 
             loss['G/loss'] = g_loss.item()
             if (i + 1) % self.log_step == 0:
+                # visualize real and fake imgs
+                vis.images((x_fake + 1) / 2, win='fake_imgs')
+                vis.images((x_mb + 1) / 2, win='real_imgs')
+                # print and visualize losses
                 et = time.time() - start_time
                 et = str(datetime.timedelta(seconds=et))[:-7]
                 log = "Elapsed [{}], Iteration [{}/{}]".format(et, i + 1, self.num_iters)
                 for tag, value in loss.items():
                     log += ", {}: {:.4f}".format(tag, value)
+                opts = dict(title='Losses', width=13, height=10, legend=list(loss.keys()))
+                vis.line(Y=[list(loss.values())], X=[np.ones(len(loss))*(i+1)], win='Losses', \
+                         update='append', opts=opts)
                 print(log)
 
             if (i + 1) % self.lr_update_step == 0 and (i + 1) > self.num_iters_decay:
